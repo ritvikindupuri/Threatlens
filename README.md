@@ -2,187 +2,211 @@
 
 ### Automated Threat Intelligence & Attack Surface Mapping Platform
 
-**By: Ritvik Indupuri**
-**Date: February 25, 2026**
+**Author:** Ritvik Indupuri  
+**Date:** February 25, 2026  
+**Live Demo:** [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
 
 ---
 
-ThreatLens is an AI-powered cybersecurity platform that automates threat intelligence gathering and attack surface mapping for web domains. It combines automated web crawling via the Firecrawl API with AI analysis powered by Google's Gemini 3 Flash Preview to deliver comprehensive security assessments — including vulnerability detection, security header analysis, technology fingerprinting, and actionable remediation guidance. The platform features an AI domain policy agent that prevents misuse, an interactive AI analyst chatbot for deep-dive investigations, and a full reporting suite with PDF export capabilities.
+## 📌 Executive Overview
+
+**ThreatLens** is an enterprise-grade, AI-powered cybersecurity platform that automates threat intelligence gathering and attack surface mapping for web domains. By combining high-speed automated web crawling via the **Firecrawl API** with deep artificial intelligence inference powered by **Google's Gemini 3 Flash Preview**, ThreatLens delivers comprehensive security assessments — including endpoint discovery, technology fingerprinting, security header analysis, real-time WHOIS/GeoIP enrichment, NIST NVD CVE vulnerability detection, and automated executive report generation.
+
+The platform features a multi-tiered **AI Domain Policy Agent** to prevent misuse on restricted targets, an interactive context-aware **AI Security Analyst Chatbot** for deep-dive investigations, **Elasticsearch (⌘K)** enterprise search, and automated scheduled scanning for continuous monitoring.
 
 ---
 
-## Key Features
+## 🌐 Live Demo
 
-- **Automated Domain Scanning** — One-click reconnaissance via Firecrawl API with URL discovery (up to 500 endpoints), HTML parsing, and technology fingerprinting
-- **AI Domain Policy Agent** — Gemini 3 Flash Preview-powered allowlist/blocklist system that auto-approves safe sites, blocks sensitive targets (.mil, critical infrastructure), and flags ambiguous domains for review
-- **Interactive AI Analyst** — Context-aware chatbot on every scan detail page with three analysis modes (Attack Surface, Findings, Raw Data) and suggested questions
-- **Attack Surface Analysis** — Discovered endpoints, client-side scripts, input vectors, external dependencies, and security header assessment with interactive tooltips
-- **Vulnerability Detection** — Missing security headers, exposed admin panels, suspicious query parameters, XSS input points, outdated libraries, and supply chain risks
-- **Risk Scoring** — Composite 0–100 score calculated from weighted severity findings (Critical: 25pts, High: 15pts, Medium: 8pts, Low: 3pts, Info: 1pt)
-- **AI Threat Reports** — One-click comprehensive reports with executive summary, vulnerability analysis, and remediation roadmap
-- **PDF Export** — Professional branded reports with cover page, findings summary, AI insights, and confidential watermarking
-- **Scan Comparison** — Side-by-side delta analysis of risk scores, vulnerabilities, technologies, and endpoints between any two scans
-- **Authentication** — Google OAuth with profile-based registration gate and protected routes
-- **Scheduled / Recurring Scans** — Configure daily, weekly, biweekly, or monthly automated scans from the Settings page. A backend cron job checks hourly for due schedules and triggers scans automatically.
-- **REST API & Programmatic Access** — Generate API keys to trigger scans, retrieve results, and pull findings from scripts, CI/CD pipelines, SIEMs, or any HTTP client — no UI required.
-- **Real CVE Vulnerability Scanning** — Detected technologies are matched against the NIST NVD 2.0 database to surface known CVEs with severity scores and reference links.
-- **Per-User Rate Limiting** — Configurable daily scan quotas (default 10/day) prevent Firecrawl credit exhaustion and enforce fair usage.
-- **Real WHOIS & Geolocation Enrichment** — Live RDAP lookups and ip-api.com geolocation replace all simulated data with real-time registration, hosting, and network details.
-- **Elasticsearch Integration** — Completed scans are automatically synced to Elastic Cloud across three indices (scans, findings, audit). Enables enterprise-grade full-text search, Kibana dashboards, and threat analytics.
-- **Global Search (⌘K)** — Command-palette search bar powered by Elasticsearch with fuzzy matching, severity/category filtering, result highlighting, and aggregation summaries.
+Access the live application here: **[https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)**
 
 ---
 
-## REST API (Programmatic Access)
+## ✨ Key Features
 
-The ThreatLens REST API lets you integrate security scanning into your existing workflows — CI/CD pipelines, automation scripts, SIEMs, or custom dashboards. Generate an API key from the **Settings → API Keys** tab, then use it to trigger scans and retrieve results without the web UI.
+- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (scraping + site mapping up to 500 endpoints), HTML parsing, and DOM structure extraction.
+- **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves safe sites, blocks sensitive targets (`.mil`, critical infrastructure, core banking), and flags ambiguous domains for review.
+- **Parallel Analysis Engines** — Simultaneous execution of Endpoint Discovery, Technology Fingerprinting (50+ frameworks/libraries), Security Headers audit (CSP, HSTS, CORS, etc.), and Multi-Source Enrichment (RDAP WHOIS, `ip-api.com` GeoIP/ASN, SSL/TLS certificates).
+- **Real CVE Vulnerability Detection** — Discovered technology stacks are queried against the NIST NVD 2.0 database to surface real CVEs, CVSS scores, and advisory reference links.
+- **Findings Engine & Risk Scoring** — Automated correlation of misconfigurations and vulnerabilities into a weighted composite 0–100 risk score (Critical: 25pts, High: 15pts, Medium: 8pts, Low: 3pts, Info: 1pt).
+- **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (*Attack Surface*, *Findings*, *Raw Data*) with suggested security prompts.
+- **Elasticsearch Enterprise Search (⌘K)** — Automatic fire-and-forget sync to Elastic Cloud across indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`) for sub-second command-palette search and Kibana threat analytics.
+- **PDF & AI Threat Reports** — One-click executive PDF report generation via `jsPDF` with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
+- **Scan Comparison & Delta Analysis** — Side-by-side comparison between any two historical scans to identify attack surface drift, new exposures, resolved vulnerabilities, and risk score deltas.
+- **Automated Recurring Scans** — Configurable daily, weekly, biweekly, or monthly scan schedules driven by a backend cron runner.
+- **REST API & Programmatic Access** — Full REST API gateway with SHA-256 hashed API keys for integrating ThreatLens into CI/CD pipelines, Python scripts, or SIEM systems.
+- **Per-User Rate Limiting & Quotas** — Daily scan quotas (default 10 scans/day) to prevent API credit exhaustion and enforce fair usage.
 
-### Use Cases
+---
 
-- A **DevOps pipeline** that automatically scans your production domain after every deployment
-- A **Python script** that pulls scan findings into a Slack channel or SIEM
-- A **third-party tool** that triggers scans and reads results via HTTP
+## 🏗️ System Architecture
+
+![ThreatLens System Architecture Diagram](https://i.imgur.com/htEgLvc.png)
+
+[*🔍 Click here to view high-resolution diagram on Imgur*](https://imgur.com/htEgLvc)
+
+### End-to-End Execution Flow
+
+The system operates across **6 sequential and parallel stages**, orchestrated via Deno Edge Functions and Lovable Cloud (Supabase):
+
+```
+Target Domain ➔ AI Policy Gate ➔ Reconnaissance ➔ Parse & Normalize ➔ Parallel Analysis ➔ Findings & Risk ➔ Intelligence & Storage ➔ Actionable Outputs
+```
+
+#### 1. Domain Submission & AI Policy Gate
+When a user submits a target domain, it passes through the **AI Policy Gate** (`evaluate-domain` Edge Function). Powered by **Gemini 3 Flash Preview**, the policy agent evaluates safety policy and usage rules:
+- **Allowed**: Public websites, SaaS platforms, corporate portals, educational domains proceed directly to reconnaissance.
+- **Blocked**: Government military (`.mil`), critical infrastructure, and core banking portals are automatically blocked.
+- **Review**: Ambiguous domains are flagged for manual review on the Policies dashboard.
+
+#### 2. Stage 1 — Reconnaissance (Firecrawl)
+Upon domain approval, the `firecrawl-scan` Edge Function initiates automated reconnaissance using the Firecrawl API:
+- **Firecrawl Scrape**: Crawls the primary landing page, extracting full HTML DOM, rendered markdown, and external links.
+- **Firecrawl Map**: Discovers subpages, linked paths, and sitemap endpoints (up to 200–500 URLs).
+
+#### 3. Stage 2 — Parse & Normalize
+Raw HTML and discovered link vectors are processed by the normalization engine:
+- Cleans, deduplicates, and normalizes all discovered URLs.
+- Extracts inline/external JavaScript bundles (`.js`, `.mjs`), HTML form input vectors, external third-party script sources, and meta HTTP headers.
+
+#### 4. Stage 3 — Parallel Analysis Engines
+The normalized data is passed concurrently into four specialized analysis modules:
+- 🔗 **Endpoint Discovery**: Extracts API endpoints, query parameters, hidden subpaths, admin portals, and sensitive routes.
+- 🛠️ **Technology Detection**: Fingerprints frameworks, CMS platforms, web servers, and client libraries (e.g., React, Next.js, WordPress, Cloudflare, jQuery).
+- 🛡️ **Security Headers**: Evaluates HTTP response and meta security headers including Content-Security-Policy (CSP), HTTP Strict Transport Security (HSTS), X-Frame-Options, CORS policies, and MIME options.
+- 🌐 **Enrichment & Real CVE Lookup**:
+  - **WHOIS & RDAP**: Live domain registration details, creation/expiry dates, registrar data.
+  - **IP & GeoIP Info**: Real-time hosting provider, ASN, ISP, and geographic country lookups via `ip-api.com`.
+  - **NIST NVD CVE Matching**: Fingerprinted technologies are queried against the NIST NVD 2.0 CVE database via the `cve-lookup` Edge Function to surface published CVE IDs, CVSS scores, and official vendor advisories.
+
+#### 5. Stage 4 — Findings Engine & Risk Scoring
+- **Findings Engine**: Correlates results across all analysis engines to flag security misconfigurations, XSS input risks, missing security controls, supply chain vulnerabilities, and active CVEs.
+- **Risk Scoring**: Calculates a composite 0–100 risk score based on weighted severity metrics (*Critical: 25pts*, *High: 15pts*, *Medium: 8pts*, *Low: 3pts*, *Info: 1pt*).
+
+#### 6. Stage 5 — Intelligence & Storage Layer
+- **Supabase (PostgreSQL)**: Primary relational datastore storing persistent scan metadata (`scans`), findings (`findings`), domain policies (`domain_policies`), audit trails (`scan_audit_log`), API keys (`api_keys`), and quotas (`scan_quotas`). Protected by Row Level Security (RLS).
+- **Elasticsearch (Elastic Cloud)**: Completed scans, findings, and audit logs are automatically synced via the `elasticsearch-sync` Edge Function to Elastic Cloud across three dedicated indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`).
+
+#### 7. Stage 6 — Actionable Outputs & User Interface
+- 📊 **Interactive Dashboard**: Visual breakdown of attack surface map, risk scores, discovered assets, and severity distribution.
+- 💬 **AI Chat Insights**: Context-aware AI Security Analyst (`AiChatPanel`) using Gemini 3 Flash Preview for deep-dive investigation into endpoints, dependencies, and raw crawl data.
+- 📄 **PDF & JSON Reports**: Downloadable, branded executive reports (`pdf-export.ts`) and AI-generated threat briefings (`analyze-threats`).
+- 📈 **Insights & Trends**: Historical scan comparison (`Compare.tsx`) for delta analysis of risk posture over time.
+- 🔍 **Global Search (⌘K)**: Sub-second command palette search powered by `elasticsearch-search` with fuzzy query matching and category aggregations.
+
+---
+
+## 💻 Tech Stack
+
+| Layer | Technology | Description |
+|---|---|---|
+| **Frontend Framework** | React 18 + TypeScript + Vite | Single-page web application architecture |
+| **Styling & UI** | Tailwind CSS + shadcn/ui + Framer Motion | Modern dark-mode UI with glassmorphism & micro-animations |
+| **State & Data Fetching** | TanStack React Query v5 | Efficient server state management, caching, and auto-refetching |
+| **Routing** | React Router v6 | Client-side routing with protected auth guards |
+| **Backend Compute** | Lovable Cloud (Supabase) | Serverless Deno Edge Functions |
+| **Database** | PostgreSQL | Relational database with Row Level Security (RLS) policies |
+| **Authentication** | Google OAuth | Managed identity provider via Supabase Auth |
+| **AI Inference** | Google Gemini 3 Flash Preview | Policy evaluation, threat report generation, and AI Analyst chat |
+| **Web Reconnaissance** | Firecrawl API | High-speed DOM scraping & endpoint mapping |
+| **CVE Intelligence** | NIST NVD 2.0 API | Real CVE vulnerability lookups for detected tech stacks |
+| **Enrichment Services** | RDAP WHOIS + `ip-api.com` | Real domain WHOIS, ASN, ISP, and GeoIP lookup |
+| **Search & Analytics** | Elastic Cloud (Elasticsearch + Kibana) | Enterprise full-text search & Kibana analytics dashboards |
+| **PDF Generation** | jsPDF + AutoTable | Client-side executive report synthesis |
+| **Data Visualization** | Recharts | Interactive risk scores, severity distribution & exposure charts |
+
+---
+
+## 🔑 REST API (Programmatic Access)
+
+ThreatLens provides a full REST API for triggering scans, querying results, and integrating threat intelligence into CI/CD pipelines, SIEMs, or custom scripts.
+
+### Authentication
+API requests require an API key passed in the `x-api-key` header. Generate API keys from **Settings ➔ API Keys** in the web interface. All keys are hashed with SHA-256 before storage.
 
 ### Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `POST` | `/functions/v1/api-gateway/scan` | Start a new scan |
-| `GET` | `/functions/v1/api-gateway/scan/:id` | Get scan details (status, risk score, technologies) |
-| `GET` | `/functions/v1/api-gateway/scan/:id/findings` | List all findings (CVEs, misconfigs) |
-| `GET` | `/functions/v1/api-gateway/scans` | List recent scans (`?limit=20`) |
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/functions/v1/api-gateway/scan` | Initiate a new security scan for a target domain |
+| `GET` | `/functions/v1/api-gateway/scan/:id` | Fetch scan details, risk score, technologies, and metadata |
+| `GET` | `/functions/v1/api-gateway/scan/:id/findings` | Retrieve all detected findings and CVEs for a scan |
+| `GET` | `/functions/v1/api-gateway/scans` | List recent scans for the authenticated user (`?limit=20`) |
 
-### Example
+### cURL Examples
 
 ```bash
-# Start a scan
-curl -X POST https://your-url/functions/v1/api-gateway/scan \
+# 1. Trigger a domain scan
+curl -X POST https://<your-supabase-url>/functions/v1/api-gateway/scan \
   -H "Content-Type: application/json" \
-  -H "x-api-key: tl_your_key_here" \
+  -H "x-api-key: tl_your_api_key_here" \
   -d '{"domain": "example.com"}'
 
-# Get results
-curl -H "x-api-key: tl_your_key_here" \
-  https://your-url/functions/v1/api-gateway/scan/SCAN_ID
+# 2. Retrieve scan status & risk score
+curl -H "x-api-key: tl_your_api_key_here" \
+  https://<your-supabase-url>/functions/v1/api-gateway/scan/SCAN_ID_HERE
 
-# Get findings
-curl -H "x-api-key: tl_your_key_here" \
-  https://your-url/functions/v1/api-gateway/scan/SCAN_ID/findings
+# 3. Fetch detected vulnerabilities & CVEs
+curl -H "x-api-key: tl_your_api_key_here" \
+  https://<your-supabase-url>/functions/v1/api-gateway/scan/SCAN_ID_HERE/findings
 ```
 
-All keys are hashed with SHA-256 — ThreatLens never stores raw keys. Each key is granted `scan:create`, `scan:read`, and `findings:read` permissions by default.
-
-## System Architecture
-
-```mermaid
-graph TB
-    subgraph Client["CLIENT - React + Vite"]
-        Dashboard["Dashboard\n(Index)"]
-        ScanDetail["Scan\nDetail"]
-        History["History\nCompare"]
-        Policies["Policies\nAudit Log"]
-        GlobalSearch["Global Search\n(Cmd+K)"]
-        Dashboard --> SBClient
-        ScanDetail --> SBClient
-        History --> SBClient
-        Policies --> SBClient
-        GlobalSearch --> SBClient
-        SBClient["Supabase JS Client"]
-    end
-
-    SBClient --> Backend
-
-    subgraph Backend["LOVABLE CLOUD"]
-        DB["PostgreSQL\nscans | findings | profiles\npolicies | audit_log | quotas"]
-        EF["Edge Functions"]
-        Auth["Auth - Google OAuth"]
-        EF --> DB
-        Auth --> DB
-    end
-
-    subgraph External["EXTERNAL SERVICES"]
-        Firecrawl["Firecrawl API\nWeb Scraping"]
-        AI["Lovable AI Gateway\nGemini 3 Flash Preview"]
-        Google["Google OAuth\nIdentity Provider"]
-        Elastic["Elastic Cloud\nSearch and Analytics"]
-    end
-
-    EF --> Firecrawl
-    EF --> AI
-    EF --> Elastic
-    Auth --> Google
-```
-
-<p align="center"><em>Figure 1 — ThreatLens System Architecture Overview</em></p>
-
-- **Client Layer** — A React SPA (built with Vite + TypeScript) renders five main views: Dashboard, Scan Detail, History/Compare, Policies, and Global Search. The Global Search command palette (⌘K) queries Elasticsearch for cross-scan full-text search. All backend communication flows through a single Supabase JS client instance.
-- **Lovable Cloud** — Six serverless Deno edge functions handle all backend compute: scan orchestration (`firecrawl-scan`), AI threat reports (`analyze-threats`), interactive AI chat (`analyze-surface`), domain policy evaluation (`evaluate-domain`), Elasticsearch sync (`elasticsearch-sync`), and Elasticsearch search (`elasticsearch-search`). PostgreSQL stores all persistent data. Google OAuth manages user authentication.
-- **External Services** — Three external platforms are consumed: Firecrawl for web scraping, the Lovable AI Gateway for AI inference using `google/gemini-3-flash-preview`, and Elastic Cloud for enterprise-grade full-text search, log aggregation, and analytics dashboards (via Kibana).
-- **Data Flow** — A user enters a domain → the policy agent evaluates it → Firecrawl scrapes and maps the site → data is parsed and findings generated → risk score calculated → results stored in PostgreSQL → automatically synced to Elasticsearch → searchable via Global Search (⌘K) and Kibana dashboards.
-
-For comprehensive technical documentation covering every system flow, database schema, AI integration, and security architecture in detail, see **[TECHNICAL_DOCS.md](./TECHNICAL_DOCS.md)**.
-
 ---
 
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | React 18, TypeScript, Vite |
-| **Styling** | Tailwind CSS, shadcn/ui, Framer Motion |
-| **State** | React hooks, TanStack React Query |
-| **Routing** | React Router v6 |
-| **Backend** | Lovable Cloud (Supabase), Deno Edge Functions |
-| **Database** | PostgreSQL with Row Level Security |
-| **Auth** | Google OAuth (Lovable Cloud managed) |
-| **AI Models** | Google Gemini 3 Flash Preview (all functions) |
-| **Web Scraping** | Firecrawl API (scrape + map endpoints) |
-| **PDF Export** | jsPDF |
-| **Charts** | Recharts |
-| **Search & Analytics** | Elastic Cloud (Elasticsearch + Kibana) |
-
----
-
-## Live Demo
-
-View the live application here: **[https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)**
-
----
-
-## Setup & Installation
+## ⚡ Setup & Local Development
 
 ### Prerequisites
-- Node.js 18+ or Bun
-- A Lovable account with Cloud enabled
-- Firecrawl API key
+- **Node.js**: v18.0.0 or higher (or **Bun**)
+- **npm** / **yarn** / **bun**
+- A **Lovable Cloud** or **Supabase** project
+- **Firecrawl API Key** ([https://firecrawl.dev](https://firecrawl.dev))
 
-### Steps
+### Installation Steps
 
-1. **Clone the repository**
+1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
-   cd threatlens
+   git clone https://github.com/ritvikindupuri/Threatlens.git
+   cd Threatlens
    ```
 
-2. **Install dependencies**
+2. **Install Dependencies**
    ```bash
    npm install
    ```
 
-3. **Configure environment**
-   The `.env` file is auto-managed by Lovable Cloud with:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_PUBLISHABLE_KEY`
-   - `VITE_SUPABASE_PROJECT_ID`
+3. **Configure Environment Variables**
+   Create a `.env` file in the project root:
+   ```env
+   VITE_SUPABASE_URL=https://your-project.supabase.co
+   VITE_SUPABASE_PUBLISHABLE_KEY=your-supabase-anon-key
+   VITE_SUPABASE_PROJECT_ID=your-project-id
+   ```
 
-4. **Add required secrets**
-   In Lovable Cloud, add the following secret:
-   - `FIRECRAWL_API_KEY` — Your Firecrawl API key for web scraping
+4. **Configure Edge Function Secrets**
+   Set the following secrets in your Supabase / Lovable Cloud project settings:
+   - `FIRECRAWL_API_KEY`: Firecrawl API authentication key
+   - `LOVABLE_API_KEY`: API key for Gemini 3 Flash Preview AI gateway
 
-5. **Run the development server**
+5. **Start the Development Server**
    ```bash
    npm run dev
    ```
+   Open `http://localhost:5173` in your browser.
 
-6. **Access the app**
-   Open `http://localhost:5173` in your browser. Sign up with Google to create an account.
+6. **Run Tests & Linting**
+   ```bash
+   npm run test
+   npm run lint
+   ```
+
+---
+
+## 📚 Technical Documentation
+
+For an in-depth breakdown of database schema definitions, Row Level Security policies, Edge Function implementations, and security architectural decisions, see **[TECHNICAL_DOCS.md](./TECHNICAL_DOCS.md)**.
+
+---
+
+<p align="center">
+  Built by <strong>Ritvik Indupuri</strong> • 2026
+</p>
