@@ -1,49 +1,61 @@
+<div align="center">
+
 # ThreatLens
 
 ### Automated Threat Intelligence & Attack Surface Mapping Platform
 
-**Author:** Ritvik Indupuri  
-**Date:** February 25, 2026  
-**Live Demo:** [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
+**Author:** Ritvik Indupuri &nbsp;|&nbsp; **Date:** February 2026
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-threatintellig.netlify.app-00C853?style=for-the-badge&logo=netlify&logoColor=white)](https://threatintellig.netlify.app/)
+[![AI Powered](https://img.shields.io/badge/AI_Powered-Gemini_3_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Scraping](https://img.shields.io/badge/Web_Scraping-Firecrawl_API-FF6D00?style=for-the-badge&logo=firefox&logoColor=white)](https://firecrawl.dev/)
+[![Search Engine](https://img.shields.io/badge/Search-Elasticsearch_8.x-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](https://elastic.co/)
 
 ---
 
+</div>
+
 ## 📌 Executive Overview
 
-**ThreatLens** is an enterprise-grade, AI-powered cybersecurity platform that automates threat intelligence gathering and attack surface mapping for web domains. By combining high-speed automated web crawling via the **Firecrawl API** with deep artificial intelligence inference powered by **Google's Gemini 3 Flash Preview**, ThreatLens delivers comprehensive security assessments — including endpoint discovery, technology fingerprinting, security header analysis, real-time WHOIS/GeoIP enrichment, NIST NVD CVE vulnerability detection, and automated executive report generation.
+**ThreatLens** is an enterprise-grade cybersecurity platform designed to automate threat intelligence gathering, attack surface mapping, and vulnerability correlation for web domains. 
 
-The platform features a multi-tiered **AI Domain Policy Agent** to prevent misuse on restricted targets, an interactive context-aware **AI Security Analyst Chatbot** for deep-dive investigations, **Elasticsearch (⌘K)** enterprise search, and automated scheduled scanning for continuous monitoring.
+By combining high-speed automated web crawling via **Firecrawl** with artificial intelligence powered by **Google Gemini 3 Flash Preview**, ThreatLens conducts comprehensive, non-invasive security assessments — surfacing exposed endpoints, technology fingerprints, security header gaps, real-time WHOIS/GeoIP metadata, and live NIST NVD CVE vulnerabilities.
+
+The platform includes an **AI Domain Policy Agent** to prevent unauthorized scanning, an interactive **AI Security Analyst Chatbot** for deep-dive investigation, **Elasticsearch (⌘K)** enterprise search, and automated scheduled scans.
 
 ---
 
 ## 🌐 Live Demo
 
-Access the live application here: **[https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)**
+Explore the live application: **[https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)**
 
 ---
 
 ## ✨ Key Features
 
-- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (scraping + site mapping up to 500 endpoints), HTML parsing, and DOM structure extraction.
-- **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves safe sites, blocks sensitive targets (`.mil`, critical infrastructure, core banking), and flags ambiguous domains for review.
-- **Parallel Analysis Engines** — Simultaneous execution of Endpoint Discovery, Technology Fingerprinting (50+ frameworks/libraries), Security Headers audit (CSP, HSTS, CORS, etc.), and Multi-Source Enrichment (RDAP WHOIS, `ip-api.com` GeoIP/ASN, SSL/TLS certificates).
-- **Real CVE Vulnerability Detection** — Discovered technology stacks are queried against the NIST NVD 2.0 database to surface real CVEs, CVSS scores, and advisory reference links.
-- **Findings Engine & Risk Scoring** — Automated correlation of misconfigurations and vulnerabilities into a weighted composite 0–100 risk score (Critical: 25pts, High: 15pts, Medium: 8pts, Low: 3pts, Info: 1pt).
-- **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (*Attack Surface*, *Findings*, *Raw Data*) with suggested security prompts.
-- **Elasticsearch Enterprise Search (⌘K)** — Automatic fire-and-forget sync to Elastic Cloud across indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`) for sub-second command-palette search and Kibana threat analytics.
-- **PDF & AI Threat Reports** — One-click executive PDF report generation via `jsPDF` with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
-- **Scan Comparison & Delta Analysis** — Side-by-side comparison between any two historical scans to identify attack surface drift, new exposures, resolved vulnerabilities, and risk score deltas.
+- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (crawling & site mapping up to 500 endpoints).
+- **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves legitimate sites, blocks sensitive targets (`.mil`, critical infrastructure, core banking), and flags ambiguous domains for review.
+- **Parallel Analysis Engines** — Concurrent execution of Endpoint Discovery, Technology Fingerprinting (50+ stacks), Security Headers audit, and Multi-Source Enrichment (RDAP WHOIS, `ip-api.com` GeoIP/ASN, SSL/TLS certificates).
+- **Real CVE Vulnerability Detection** — Automated matching of detected technology stacks against the NIST NVD 2.0 database to surface published CVEs, CVSS scores, and official advisories.
+- **Findings Engine & Risk Scoring** — Intelligent correlation of misconfigurations into a weighted composite 0–100 risk score (*Critical: 25pts*, *High: 15pts*, *Medium: 8pts*, *Low: 3pts*, *Info: 1pt*).
+- **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (*Attack Surface*, *Findings*, *Raw Data*).
+- **Elasticsearch Enterprise Search (⌘K)** — Automatic background sync to Elastic Cloud across indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`) for sub-second command-palette search and Kibana threat analytics.
+- **PDF & AI Threat Reports** — Professional executive PDF report generation (`jsPDF`) with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
+- **Scan Comparison & Delta Analysis** — Side-by-side comparison between historical scans to identify attack surface drift, new exposures, and risk score deltas.
 - **Automated Recurring Scans** — Configurable daily, weekly, biweekly, or monthly scan schedules driven by a backend cron runner.
 - **REST API & Programmatic Access** — Full REST API gateway with SHA-256 hashed API keys for integrating ThreatLens into CI/CD pipelines, Python scripts, or SIEM systems.
-- **Per-User Rate Limiting & Quotas** — Daily scan quotas (default 10 scans/day) to prevent API credit exhaustion and enforce fair usage.
 
 ---
 
 ## 🏗️ System Architecture
 
-![ThreatLens System Architecture Diagram](https://i.imgur.com/htEgLvc.png)
+<div align="center">
+  <img src="https://i.imgur.com/htEgLvc.png" alt="ThreatLens System Architecture Diagram" width="100%" />
+  <br/><br/>
+  <sub><strong>Figure 1: ThreatLens End-to-End System Architecture & Data Flow</strong></sub>
+</div>
 
-[*🔍 Click here to view high-resolution diagram on Imgur*](https://imgur.com/htEgLvc)
+<br/>
 
 ### End-to-End Execution Flow
 
@@ -102,7 +114,7 @@ The normalized data is passed concurrently into four specialized analysis module
 |---|---|---|
 | **Frontend Framework** | React 18 + TypeScript + Vite | Single-page web application architecture |
 | **Styling & UI** | Tailwind CSS + shadcn/ui + Framer Motion | Modern dark-mode UI with glassmorphism & micro-animations |
-| **State & Data Fetching** | TanStack React Query v5 | Efficient server state management, caching, and auto-refetching |
+| **State & Fetching** | TanStack React Query v5 | Efficient server state management, caching, and auto-refetching |
 | **Routing** | React Router v6 | Client-side routing with protected auth guards |
 | **Backend Compute** | Lovable Cloud (Supabase) | Serverless Deno Edge Functions |
 | **Database** | PostgreSQL | Relational database with Row Level Security (RLS) policies |
@@ -207,6 +219,6 @@ For an in-depth breakdown of database schema definitions, Row Level Security pol
 
 ---
 
-<p align="center">
-  Built by <strong>Ritvik Indupuri</strong> • 2026
-</p>
+<div align="center">
+  <sub>Built by <strong>Ritvik Indupuri</strong> • 2026</sub>
+</div>
