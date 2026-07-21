@@ -4,7 +4,7 @@
 
 ### Automated Threat Intelligence & Attack Surface Mapping Platform
 
-**Author:** Ritvik Indupuri &nbsp;|&nbsp; **Date:** February 2026 &nbsp;|&nbsp; **Live Demo:** [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
+**Author:** Ritvik Indupuri &nbsp;|&nbsp; **Date:** February 2026
 
 ---
 
@@ -17,12 +17,6 @@
 By combining high-speed automated web crawling via **Firecrawl** with artificial intelligence powered by **Google Gemini 3 Flash Preview**, ThreatLens conducts comprehensive, non-invasive security assessments — surfacing exposed endpoints, technology fingerprints, security header gaps, real-time WHOIS/GeoIP metadata, and live NIST NVD CVE vulnerabilities.
 
 The platform includes an **AI Domain Policy Agent** to prevent unauthorized scanning, an interactive **AI Security Analyst Chatbot** for deep-dive investigation, **Elasticsearch (⌘K)** enterprise search, and automated scheduled scans.
-
----
-
-## Live Demo
-
-Explore the live application: [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
 
 ---
 
@@ -55,10 +49,6 @@ Explore the live application: [https://threatintellig.netlify.app/](https://thre
 ### End-to-End Execution Flow
 
 The system operates across **6 sequential and parallel stages**, orchestrated via Deno Edge Functions and Lovable Cloud (Supabase):
-
-```
-Target Domain -> AI Policy Gate -> Reconnaissance -> Parse & Normalize -> Parallel Analysis -> Findings & Risk -> Intelligence & Storage -> Actionable Outputs
-```
 
 #### 1. Domain Submission & AI Policy Gate
 When a user submits a target domain, it passes through the **AI Policy Gate** (`evaluate-domain` Edge Function). Powered by **Gemini 3 Flash Preview**, the policy agent evaluates safety policy and usage rules:
