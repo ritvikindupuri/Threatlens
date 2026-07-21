@@ -4,20 +4,15 @@
 
 ### Automated Threat Intelligence & Attack Surface Mapping Platform
 
-**Author:** Ritvik Indupuri &nbsp;|&nbsp; **Date:** February 2026
-
-[![Live Demo](https://img.shields.io/badge/Live_Demo-threatintellig.netlify.app-00C853?style=for-the-badge&logo=netlify&logoColor=white)](https://threatintellig.netlify.app/)
-[![AI Powered](https://img.shields.io/badge/AI_Powered-Gemini_3_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![Scraping](https://img.shields.io/badge/Web_Scraping-Firecrawl_API-FF6D00?style=for-the-badge&logo=firefox&logoColor=white)](https://firecrawl.dev/)
-[![Search Engine](https://img.shields.io/badge/Search-Elasticsearch_8.x-005571?style=for-the-badge&logo=elasticsearch&logoColor=white)](https://elastic.co/)
+**Author:** Ritvik Indupuri &nbsp;|&nbsp; **Date:** February 2026 &nbsp;|&nbsp; **Live Demo:** [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
 
 ---
 
 </div>
 
-## 📌 Executive Overview
+## Executive Overview
 
-**ThreatLens** is an enterprise-grade cybersecurity platform designed to automate threat intelligence gathering, attack surface mapping, and vulnerability correlation for web domains. 
+**ThreatLens** is an enterprise-grade cybersecurity platform designed to automate threat intelligence gathering, attack surface mapping, and vulnerability correlation for web domains.
 
 By combining high-speed automated web crawling via **Firecrawl** with artificial intelligence powered by **Google Gemini 3 Flash Preview**, ThreatLens conducts comprehensive, non-invasive security assessments — surfacing exposed endpoints, technology fingerprints, security header gaps, real-time WHOIS/GeoIP metadata, and live NIST NVD CVE vulnerabilities.
 
@@ -25,29 +20,29 @@ The platform includes an **AI Domain Policy Agent** to prevent unauthorized scan
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-Explore the live application: **[https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)**
+Explore the live application: [https://threatintellig.netlify.app/](https://threatintellig.netlify.app/)
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (crawling & site mapping up to 500 endpoints).
-- **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves legitimate sites, blocks sensitive targets (`.mil`, critical infrastructure, core banking), and flags ambiguous domains for review.
-- **Parallel Analysis Engines** — Concurrent execution of Endpoint Discovery, Technology Fingerprinting (50+ stacks), Security Headers audit, and Multi-Source Enrichment (RDAP WHOIS, `ip-api.com` GeoIP/ASN, SSL/TLS certificates).
+- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (crawling and site mapping up to 500 endpoints).
+- **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves legitimate sites, blocks sensitive targets (.mil, critical infrastructure, core banking), and flags ambiguous domains for review.
+- **Parallel Analysis Engines** — Concurrent execution of Endpoint Discovery, Technology Fingerprinting (50+ stacks), Security Headers audit, and Multi-Source Enrichment (RDAP WHOIS, ip-api.com GeoIP/ASN, SSL/TLS certificates).
 - **Real CVE Vulnerability Detection** — Automated matching of detected technology stacks against the NIST NVD 2.0 database to surface published CVEs, CVSS scores, and official advisories.
-- **Findings Engine & Risk Scoring** — Intelligent correlation of misconfigurations into a weighted composite 0–100 risk score (*Critical: 25pts*, *High: 15pts*, *Medium: 8pts*, *Low: 3pts*, *Info: 1pt*).
-- **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (*Attack Surface*, *Findings*, *Raw Data*).
-- **Elasticsearch Enterprise Search (⌘K)** — Automatic background sync to Elastic Cloud across indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`) for sub-second command-palette search and Kibana threat analytics.
-- **PDF & AI Threat Reports** — Professional executive PDF report generation (`jsPDF`) with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
+- **Findings Engine & Risk Scoring** — Intelligent correlation of misconfigurations into a weighted composite 0–100 risk score (Critical: 25pts, High: 15pts, Medium: 8pts, Low: 3pts, Info: 1pt).
+- **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (Attack Surface, Findings, Raw Data).
+- **Elasticsearch Enterprise Search (⌘K)** — Automatic background sync to Elastic Cloud across indices (threatlens-scans, threatlens-findings, threatlens-audit) for sub-second command-palette search and Kibana threat analytics.
+- **PDF & AI Threat Reports** — Professional executive PDF report generation (jsPDF) with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
 - **Scan Comparison & Delta Analysis** — Side-by-side comparison between historical scans to identify attack surface drift, new exposures, and risk score deltas.
 - **Automated Recurring Scans** — Configurable daily, weekly, biweekly, or monthly scan schedules driven by a backend cron runner.
 - **REST API & Programmatic Access** — Full REST API gateway with SHA-256 hashed API keys for integrating ThreatLens into CI/CD pipelines, Python scripts, or SIEM systems.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 <div align="center">
   <img src="https://i.imgur.com/htEgLvc.png" alt="ThreatLens System Architecture Diagram" width="100%" />
@@ -62,7 +57,7 @@ Explore the live application: **[https://threatintellig.netlify.app/](https://th
 The system operates across **6 sequential and parallel stages**, orchestrated via Deno Edge Functions and Lovable Cloud (Supabase):
 
 ```
-Target Domain ➔ AI Policy Gate ➔ Reconnaissance ➔ Parse & Normalize ➔ Parallel Analysis ➔ Findings & Risk ➔ Intelligence & Storage ➔ Actionable Outputs
+Target Domain -> AI Policy Gate -> Reconnaissance -> Parse & Normalize -> Parallel Analysis -> Findings & Risk -> Intelligence & Storage -> Actionable Outputs
 ```
 
 #### 1. Domain Submission & AI Policy Gate
@@ -83,10 +78,10 @@ Raw HTML and discovered link vectors are processed by the normalization engine:
 
 #### 4. Stage 3 — Parallel Analysis Engines
 The normalized data is passed concurrently into four specialized analysis modules:
-- 🔗 **Endpoint Discovery**: Extracts API endpoints, query parameters, hidden subpaths, admin portals, and sensitive routes.
-- 🛠️ **Technology Detection**: Fingerprints frameworks, CMS platforms, web servers, and client libraries (e.g., React, Next.js, WordPress, Cloudflare, jQuery).
-- 🛡️ **Security Headers**: Evaluates HTTP response and meta security headers including Content-Security-Policy (CSP), HTTP Strict Transport Security (HSTS), X-Frame-Options, CORS policies, and MIME options.
-- 🌐 **Enrichment & Real CVE Lookup**:
+- **Endpoint Discovery**: Extracts API endpoints, query parameters, hidden subpaths, admin portals, and sensitive routes.
+- **Technology Detection**: Fingerprints frameworks, CMS platforms, web servers, and client libraries (e.g., React, Next.js, WordPress, Cloudflare, jQuery).
+- **Security Headers**: Evaluates HTTP response and meta security headers including Content-Security-Policy (CSP), HTTP Strict Transport Security (HSTS), X-Frame-Options, CORS policies, and MIME options.
+- **Enrichment & Real CVE Lookup**:
   - **WHOIS & RDAP**: Live domain registration details, creation/expiry dates, registrar data.
   - **IP & GeoIP Info**: Real-time hosting provider, ASN, ISP, and geographic country lookups via `ip-api.com`.
   - **NIST NVD CVE Matching**: Fingerprinted technologies are queried against the NIST NVD 2.0 CVE database via the `cve-lookup` Edge Function to surface published CVE IDs, CVSS scores, and official vendor advisories.
@@ -100,21 +95,21 @@ The normalized data is passed concurrently into four specialized analysis module
 - **Elasticsearch (Elastic Cloud)**: Completed scans, findings, and audit logs are automatically synced via the `elasticsearch-sync` Edge Function to Elastic Cloud across three dedicated indices (`threatlens-scans`, `threatlens-findings`, `threatlens-audit`).
 
 #### 7. Stage 6 — Actionable Outputs & User Interface
-- 📊 **Interactive Dashboard**: Visual breakdown of attack surface map, risk scores, discovered assets, and severity distribution.
-- 💬 **AI Chat Insights**: Context-aware AI Security Analyst (`AiChatPanel`) using Gemini 3 Flash Preview for deep-dive investigation into endpoints, dependencies, and raw crawl data.
-- 📄 **PDF & JSON Reports**: Downloadable, branded executive reports (`pdf-export.ts`) and AI-generated threat briefings (`analyze-threats`).
-- 📈 **Insights & Trends**: Historical scan comparison (`Compare.tsx`) for delta analysis of risk posture over time.
-- 🔍 **Global Search (⌘K)**: Sub-second command palette search powered by `elasticsearch-search` with fuzzy query matching and category aggregations.
+- **Interactive Dashboard**: Visual breakdown of attack surface map, risk scores, discovered assets, and severity distribution.
+- **AI Chat Insights**: Context-aware AI Security Analyst (`AiChatPanel`) using Gemini 3 Flash Preview for deep-dive investigation into endpoints, dependencies, and raw crawl data.
+- **PDF & JSON Reports**: Downloadable, branded executive reports (`pdf-export.ts`) and AI-generated threat briefings (`analyze-threats`).
+- **Insights & Trends**: Historical scan comparison (`Compare.tsx`) for delta analysis of risk posture over time.
+- **Global Search (⌘K)**: Sub-second command palette search powered by `elasticsearch-search` with fuzzy query matching and category aggregations.
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 | Layer | Technology | Description |
 |---|---|---|
 | **Frontend Framework** | React 18 + TypeScript + Vite | Single-page web application architecture |
-| **Styling & UI** | Tailwind CSS + shadcn/ui + Framer Motion | Modern dark-mode UI with glassmorphism & micro-animations |
-| **State & Fetching** | TanStack React Query v5 | Efficient server state management, caching, and auto-refetching |
+| **Styling & UI** | Tailwind CSS + shadcn/ui + Framer Motion | Modern dark-mode UI with glassmorphism |
+| **State & Fetching** | TanStack React Query v5 | Server state management, caching, and auto-refetching |
 | **Routing** | React Router v6 | Client-side routing with protected auth guards |
 | **Backend Compute** | Lovable Cloud (Supabase) | Serverless Deno Edge Functions |
 | **Database** | PostgreSQL | Relational database with Row Level Security (RLS) policies |
@@ -122,19 +117,19 @@ The normalized data is passed concurrently into four specialized analysis module
 | **AI Inference** | Google Gemini 3 Flash Preview | Policy evaluation, threat report generation, and AI Analyst chat |
 | **Web Reconnaissance** | Firecrawl API | High-speed DOM scraping & endpoint mapping |
 | **CVE Intelligence** | NIST NVD 2.0 API | Real CVE vulnerability lookups for detected tech stacks |
-| **Enrichment Services** | RDAP WHOIS + `ip-api.com` | Real domain WHOIS, ASN, ISP, and GeoIP lookup |
+| **Enrichment Services** | RDAP WHOIS + ip-api.com | Real domain WHOIS, ASN, ISP, and GeoIP lookup |
 | **Search & Analytics** | Elastic Cloud (Elasticsearch + Kibana) | Enterprise full-text search & Kibana analytics dashboards |
 | **PDF Generation** | jsPDF + AutoTable | Client-side executive report synthesis |
 | **Data Visualization** | Recharts | Interactive risk scores, severity distribution & exposure charts |
 
 ---
 
-## 🔑 REST API (Programmatic Access)
+## REST API (Programmatic Access)
 
 ThreatLens provides a full REST API for triggering scans, querying results, and integrating threat intelligence into CI/CD pipelines, SIEMs, or custom scripts.
 
 ### Authentication
-API requests require an API key passed in the `x-api-key` header. Generate API keys from **Settings ➔ API Keys** in the web interface. All keys are hashed with SHA-256 before storage.
+API requests require an API key passed in the `x-api-key` header. Generate API keys from **Settings -> API Keys** in the web interface. All keys are hashed with SHA-256 before storage.
 
 ### Endpoints
 
@@ -165,13 +160,13 @@ curl -H "x-api-key: tl_your_api_key_here" \
 
 ---
 
-## ⚡ Setup & Local Development
+## Setup & Local Development
 
 ### Prerequisites
 - **Node.js**: v18.0.0 or higher (or **Bun**)
 - **npm** / **yarn** / **bun**
 - A **Lovable Cloud** or **Supabase** project
-- **Firecrawl API Key** ([https://firecrawl.dev](https://firecrawl.dev))
+- **Firecrawl API Key** (https://firecrawl.dev)
 
 ### Installation Steps
 
@@ -213,7 +208,7 @@ curl -H "x-api-key: tl_your_api_key_here" \
 
 ---
 
-## 📚 Technical Documentation
+## Technical Documentation
 
 For an in-depth breakdown of database schema definitions, Row Level Security policies, Edge Function implementations, and security architectural decisions, see **[TECHNICAL_DOCS.md](./TECHNICAL_DOCS.md)**.
 
