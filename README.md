@@ -22,16 +22,16 @@ The platform includes an **AI Domain Policy Agent** to prevent unauthorized scan
 
 ## Key Features
 
-- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (crawling and site mapping up to 500 endpoints).
+- **Automated Reconnaissance & Crawling** — One-click deep domain scanning via Firecrawl API (crawling and site mapping up to 200 URLs).
 - **AI Policy Gate & Safety Agent** — Gemini 3 Flash Preview-powered policy evaluation that auto-approves legitimate sites, blocks sensitive targets (.mil, critical infrastructure, core banking), and flags ambiguous domains for review.
-- **Parallel Analysis Engines** — Concurrent execution of Endpoint Discovery, Technology Fingerprinting (50+ stacks), Security Headers audit, and Multi-Source Enrichment (RDAP WHOIS, ip-api.com GeoIP/ASN, SSL/TLS certificates).
+- **Parallel Analysis Engines** — Concurrent execution of Endpoint Discovery, Technology Fingerprinting (20 common frameworks, CMSs and analytics tools), Security Headers audit, and Multi-Source Enrichment (RDAP WHOIS, ip-api.com GeoIP/ASN, SSL/TLS certificates).
 - **Real CVE Vulnerability Detection** — Automated matching of detected technology stacks against the NIST NVD 2.0 database to surface published CVEs, CVSS scores, and official advisories.
 - **Findings Engine & Risk Scoring** — Intelligent correlation of misconfigurations into a weighted composite 0–100 risk score (Critical: 25pts, High: 15pts, Medium: 8pts, Low: 3pts, Info: 1pt).
 - **Interactive AI Analyst Chatbot** — Embedded context-aware assistant powered by Gemini 3 Flash offering three investigation modes (Attack Surface, Findings, Raw Data).
 - **Elasticsearch Enterprise Search (⌘K)** — Automatic background sync to Elastic Cloud across indices (threatlens-scans, threatlens-findings, threatlens-audit) for sub-second command-palette search and Kibana threat analytics.
 - **PDF & AI Threat Reports** — Professional executive PDF report generation (jsPDF) with custom branding, cover page, severity breakdown, confidential watermarks, and AI remediation roadmaps.
 - **Scan Comparison & Delta Analysis** — Side-by-side comparison between historical scans to identify attack surface drift, new exposures, and risk score deltas.
-- **Automated Recurring Scans** — Configurable daily, weekly, biweekly, or monthly scan schedules driven by a backend cron runner.
+- **Automated Recurring Scans** — Configurable daily, weekly, biweekly, or monthly scan schedules executed by the `scheduled-scan-runner` Edge Function (requires a pg_cron job to be configured).
 - **REST API & Programmatic Access** — Full REST API gateway with SHA-256 hashed API keys for integrating ThreatLens into CI/CD pipelines, Python scripts, or SIEM systems.
 
 ---
@@ -59,7 +59,7 @@ When a user submits a target domain, it passes through the **AI Policy Gate** (`
 #### 2. Stage 1 — Reconnaissance (Firecrawl)
 Upon domain approval, the `firecrawl-scan` Edge Function initiates automated reconnaissance using the Firecrawl API:
 - **Firecrawl Scrape**: Crawls the primary landing page, extracting full HTML DOM, rendered markdown, and external links.
-- **Firecrawl Map**: Discovers subpages, linked paths, and sitemap endpoints (up to 200–500 URLs).
+- **Firecrawl Map**: Discovers subpages, linked paths, and sitemap endpoints (up to 200 URLs).
 
 #### 3. Stage 2 — Parse & Normalize
 Raw HTML and discovered link vectors are processed by the normalization engine:
